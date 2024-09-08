@@ -1,0 +1,5 @@
+softwareprojectenv/
+__pycache__/
+*.pyc
+routers/__pycache__/
+utils/__pycache__/
