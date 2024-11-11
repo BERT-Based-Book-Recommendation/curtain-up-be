@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from routers import test
+from routers import recommend
 
 app = FastAPI()
-app.include_router(test.router)
+app.include_router(recommend.router)
 
 if __name__ == "__main__":
   import uvicorn

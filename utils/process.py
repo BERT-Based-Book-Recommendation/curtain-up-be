@@ -1,20 +1,4 @@
 import pandas as pd
-import os
-
-# 데이터 불러오기
-def load_data(root="data/"):
-  bookdata_path = os.path.join(root, "book.csv")
-  reviewdata_path = os.path.join(root, "review.csv")
-  # 파일 경로 존재 여부 확인
-  if not os.path.exists(bookdata_path):
-      print(f"Error: {bookdata_path} 파일을 찾을 수 없습니다.")
-      return
-  if not os.path.exists(reviewdata_path):
-      print(f"Error: {reviewdata_path} 파일을 찾을 수 없습니다.")
-      return
-  book_df = pd.read_csv(bookdata_path)
-  review_df = pd.read_csv(reviewdata_path)
-  return book_df, review_df
 
 # 불용어 처리
 def remove_stopwords(input):
