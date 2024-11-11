@@ -1,6 +1,5 @@
-softwareprojectenv/
+swprojectenv/
 __pycache__/
 *.pyc
 routers/__pycache__/
 utils/__pycache__/
-model/book_intro_train_fixlib_batch8_softmax_BERT.pt
