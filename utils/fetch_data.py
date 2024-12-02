@@ -14,12 +14,22 @@ def load_vec_data(root="data/"):
   return embedding_df, df.index
 
 
-def load_data(root="data/"):
+def load_musical_data(root="data/"):
   musical_data_path = os.path.join(root, "musical_intro.csv")
   # 파일 경로 존재 여부 확인
   if not os.path.exists(musical_data_path):
       print(f"Error: {musical_data_path} 파일을 찾을 수 없습니다.")
       return
   df = pd.read_csv(musical_data_path)
+  
+  return df
+
+def load_reveiw_data(root="data/"):
+  review_data_path = os.path.join(root, "system_rv_final.csv")
+  # 파일 경로 존재 여부 확인
+  if not os.path.exists(review_data_path):
+      print(f"Error: {review_data_path} 파일을 찾을 수 없습니다.")
+      return
+  df = pd.read_csv(review_data_path)
   
   return df
