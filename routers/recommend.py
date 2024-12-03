@@ -22,7 +22,7 @@ async def recommend_book(request: RecommendRequest):
     inputText = request.inputText  # 요청 본문에서 inputText 가져오기
 
     # 데이터 로드
-    musical_intro = load_musical_data()
+    musical = load_musical_data()
     review = load_reveiw_data()
     # 모델 로드
     model = load_model()
@@ -42,7 +42,7 @@ async def recommend_book(request: RecommendRequest):
     top_books = []
     for idx in top_2_indices:
         book_index = book_indices[idx]
-        most_similar_book = musical_intro.loc[book_index, ['name', 'pre_intro']]
+        most_similar_book = musical.loc[book_index, ['name', 'image', 'pre_intro']]
         # review 데이터 프레임에서 key가 most_similar_book['name']인 행의 내용을 가져오기
         related_reviews = review[review['key'] == most_similar_book['name']][['rv_title', 'writer']]
         
@@ -53,10 +53,11 @@ async def recommend_book(request: RecommendRequest):
         
         top_books.append({
             "name": most_similar_book['name'],
+            "image": most_similar_book['image'],
             "pre_intro": most_similar_book['pre_intro'],
             "similarity": book_similars[idx],
             "review": reviews_list
         })
-        
+
     # 출력 결과를 JSON 형식으로 반환
     return JSONResponse(content={"recommended_books": top_books})
